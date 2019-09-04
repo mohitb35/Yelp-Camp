@@ -89,11 +89,11 @@ header {
 
 header h1 {
 	font-weight: 700;
-	font-size: 3rem;
+	font-size: 2rem;
 }
 
 header p {
-	font-size: 1.25rem;
+	font-size: 1.1rem;
 	font-style: italic;
 }
 
@@ -148,15 +148,96 @@ a.button:focus {
 	padding: 0 1rem;
 }
 
+/* Navbar
+---------------------------------------------------------------------------- */
+.navbar {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	background-color: #6320EE;
+	color: #F8F0FB;
+}
+
+.navbar-first {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 1rem;
+}
+
+.navbar-second {
+	width: 100%;
+	background: black;
+	transition: max-height 400ms ease-in-out;
+	overflow: hidden;
+	max-height: 500px;
+}
+
+.navbar-second-hidden {
+	max-height: 0;
+}
+
+.navbar-brand img {
+	width: 32px;
+	height: 32px;
+	margin-right: 1rem;
+}
+
+.navbar-brand {
+	display: flex;
+	align-items: center;
+	font-size: 1.25rem;
+}
+
+.navbar-section ul{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	list-style-type: none;
+	padding: 0;
+}
+
+.navbar-link {
+	padding: 0.5rem 1rem;
+	text-align: center;
+}
+
+.navbar a, .navbar a:visited {
+	color: #F8F0FB;
+	text-decoration: none;
+}
+
+.navbar a:hover {
+	color: #c5cbd3;
+}
+
 
 /* Media Queries
 ---------------------------------------------------------------------------- */
-@media (max-width: 480px) {
+@media (min-width: 480px) {
 	header h1 {
-		font-size: 2rem;
+		font-size: 3rem;
 	}
 
 	header p {
-		font-size: 1.1rem;
+		font-size: 1.25rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.navbar, .navbar-section ul {
+		flex-direction: row;
+	}
+
+	.navbar-second {
+		background: inherit;
+		width: auto;
+		display: block;
+	}
+
+	.navbar-menu-button {
+		display: none;
 	}
 }
