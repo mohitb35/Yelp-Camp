@@ -153,7 +153,7 @@ a.button:focus {
 .navbar {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
 	background-color: #6320EE;
 	color: #F8F0FB;
@@ -235,6 +235,11 @@ a.button:focus {
 		background: inherit;
 		width: auto;
 		display: block;
+		max-height: 500px;
+	}
+
+	.navbar-first {
+		width: auto;
 	}
 
 	.navbar-menu-button {
