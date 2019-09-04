@@ -1,0 +1,25 @@
+<%- include('partials/header')  %>
+
+<main>
+	<header>
+		<h1>This is the Campgrounds page</h1>
+		<p>View our handpicked campgrounds from all over the world.</p>
+		<a class="button" href='/campgrounds/new'>Add New Campground</a>
+	</header>
+	<section id="campground-grid">
+		<% 
+		campgrounds.forEach(campground => { %>
+			<article class="campground-card">
+				<img src='<%= campground.image %>' alt='<%= campground.name %>'>
+				<h2><%= campground.name %></h2>
+			</article>
+		<% });
+		%>	
+	</section>
+</main>
+
+
+
+
+
+<%- include('partials/footer')  %>

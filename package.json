@@ -1,0 +1,24 @@
+{
+  "name": "yelpcamp",
+  "version": "1.0.0",
+  "description": "Main Project from Colt Steel WDB. Uses node, express, mongoDB and vanilla JS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohitb35/Yelp-Camp.git"
+  },
+  "author": "Mohit Bajaj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohitb35/Yelp-Camp/issues"
+  },
+  "homepage": "https://github.com/mohitb35/Yelp-Camp#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1"
+  }
+}
