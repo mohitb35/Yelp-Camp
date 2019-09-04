@@ -81,7 +81,7 @@ body {
 header {
 	width: 100%;
 	background-color: #C5CBD3;
-	margin: 0 auto;
+	margin: 4rem auto;
 	margin-bottom: 2rem;
 	padding: 1.25rem 1.25rem 2.5rem 1.25rem;
 	text-align: center;
@@ -157,6 +157,9 @@ a.button:focus {
 	align-items: center;
 	background-color: #6320EE;
 	color: #F8F0FB;
+	position: fixed;
+	top: 0;
+	width: 100%;
 }
 
 .navbar-first {
@@ -171,12 +174,12 @@ a.button:focus {
 	width: 100%;
 	background: black;
 	transition: max-height 400ms ease-in-out;
-	overflow: hidden;
 	max-height: 500px;
+	overflow: hidden;
 }
 
 .navbar-second-hidden {
-	max-height: 0;
+	max-height: 0;	
 }
 
 .navbar-brand img {
@@ -200,7 +203,8 @@ a.button:focus {
 }
 
 .navbar-link {
-	padding: 0.5rem 1rem;
+	padding: 0 1rem;
+	line-height: 2rem;
 	text-align: center;
 }
 
@@ -211,7 +215,7 @@ a.button:focus {
 
 .navbar a:hover {
 	color: #c5cbd3;
-}
+} 
 
 
 /* Media Queries
