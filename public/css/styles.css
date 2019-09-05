@@ -129,6 +129,15 @@ main {
 	min-height: 90vh;
 }
 
+a, a:visited {
+	color: #6320EE;
+	text-decoration: none;
+}
+
+a:hover {
+	opacity: 0.5;
+} 
+
 a.button, button {
 	display: inline-block;
 	padding: 1rem 2rem;
@@ -269,6 +278,7 @@ button:focus {
 	flex-direction: column;
 	justify-content: flex-start;
 	margin: 0 auto;
+	margin-bottom: 2rem;
 	padding: 0 2rem 2rem 2rem;
 	border-radius: 0.4rem;
 	width: 500px;
@@ -310,7 +320,6 @@ button:focus {
 	cursor: pointer;
 	width: 100%;
 }
-
 
 /* Media Queries
 ---------------------------------------------------------------------------- */
