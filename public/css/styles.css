@@ -123,10 +123,13 @@ footer {
 main {
 	padding-bottom: 4.5rem;
 	display: flex;
-    flex-direction: column;
-	justify-content: center;
+	flex-direction: column;
 	align-items: center;
 	min-height: 90vh;
+}
+
+main.centered-content {
+	justify-content: center;
 }
 
 a, a:visited {
@@ -156,6 +159,7 @@ a.button:focus,
 button:hover,
 button:focus {
 	background: #6320EE;
+	opacity: 1;
 	transform: scale(1.01);
 	outline: none;
 }
@@ -277,8 +281,7 @@ button:focus {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	margin: 0 auto;
-	margin-bottom: 2rem;
+	margin: 2rem auto;
 	padding: 0 2rem 2rem 2rem;
 	border-radius: 0.4rem;
 	width: 500px;
