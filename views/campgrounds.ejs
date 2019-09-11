@@ -8,8 +8,12 @@
 		<section id="campground-grid">
 			<% campgrounds.forEach(campground => { %>
 				<article class="campground-card">
-					<img src='<%= campground.image %>' alt='<%= campground.name %>'>
-					<h2><%= campground.name %></h2>
+					<a href='/campgrounds/<%= campground._id %>'>
+						<img src='<%= campground.image %>' alt='<%= campground.name %>'>
+					</a>
+					<a href='/campgrounds/<%= campground._id %>'>
+						<h2><%= campground.name %></h2>
+					</a>
 				</article>
 			<% });
 			%>	

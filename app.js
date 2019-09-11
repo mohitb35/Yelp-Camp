@@ -15,7 +15,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // DB Schema set up
 let campgroundSchema = mongoose.Schema({
 	name: String,
-	image: String
+	image: String,
+	description: String
 });
 
 // DB Model setup
@@ -40,7 +41,7 @@ app.get('/', (req, res) => {
 	res.render('landing');
 });
 
-// Campgrounds
+// Campgrounds Index Roues
 app.get('/campgrounds', (req, res) => {
 	// Get campgrounds from DB
 	Campground.find({}, (err, allCampgrounds) => {
@@ -52,11 +53,13 @@ app.get('/campgrounds', (req, res) => {
 	})
 });
 
+// Campgrounds Create Route
 app.post('/campgrounds', (req, res) => {
 	// Create new campground and save to DB
 	let newCampground = {
 		name: req.body.name,
-		image: req.body.image
+		image: req.body.image,
+		description: req.body.description
 	}
 	Campground.create(newCampground, (err, createdCampground) => {
 		if(err) {
@@ -68,8 +71,21 @@ app.post('/campgrounds', (req, res) => {
 	})
 });
 
+// Campgrounds New Route
 app.get('/campgrounds/new', (req, res) => {
 	res.render('new');
+});
+
+// Campgrounds Show Route
+app.get('/campgrounds/:id', (req, res) => {
+	let id = req.params.id;
+	Campground.findById(id, (err, fetchedCampground) => {
+		if(err) {
+			console.log(err);
+		} else {
+			res.render("show", {campground: fetchedCampground})
+		}
+	})
 });
 
 

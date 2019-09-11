@@ -180,7 +180,7 @@ button:focus {
 	text-align: center;
 }
 
-.campground-card img {
+.campground-card a img {
 	object-fit: cover;
 	/* In order to ensure that the bottom of the image does not get hidden */
 	object-position: bottom;
@@ -190,8 +190,13 @@ button:focus {
 	border-top-right-radius: 1rem;
 }
 
-.campground-card h2 {
+.campground-card a:hover {
+	opacity: 0.75;
+}
+
+.campground-card a h2 {
 	padding: 0 1rem;
+	color: #211A1D;
 }
 
 .top-spacer {
@@ -269,6 +274,7 @@ button:focus {
 
 .navbar a:hover {
 	color: #c5cbd3;
+	opacity: 1;
 } 
 
 
