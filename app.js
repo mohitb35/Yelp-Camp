@@ -74,7 +74,7 @@ app.get('/campgrounds/new', (req, res) => {
 // Campgrounds Show Route
 app.get('/campgrounds/:id', (req, res) => {
 	let id = req.params.id;
-	Campground.findById(id, (err, fetchedCampground) => {
+	Campground.findById(id).populate("comments").exec( (err, fetchedCampground) => {
 		if(err) {
 			console.log(err);
 		} else {
