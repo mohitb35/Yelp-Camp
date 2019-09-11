@@ -5,7 +5,13 @@ const mongoose = require('mongoose');
 let campgroundSchema = mongoose.Schema({
 	name: String,
 	image: String,
-	description: String
+	description: String,
+	comments: [
+		{
+			type: mongoose.Schema.Types.ObjectId, //Mongoose Object IDs that belong to a Post
+			ref: "Comment"
+		}
+	]
 });
 
 // DB Model setup
