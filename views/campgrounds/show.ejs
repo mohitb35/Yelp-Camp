@@ -1,16 +1,48 @@
 <%- include('../partials/header')  %>
 	<main>
-		<h1>Campground Details</h1>
-		<h2><%= campground.name %></h2>
-		<img src='<%= campground.image %>' alt='<%= campground.name %>'>
-		<p><%= campground.description %></p>
-		<h3>Comments</h3>
-		<a class="button" href="/campgrounds/<%= campground._id %>/comments/new">Add Comment</a>
-		<% campground.comments.forEach(comment => { %>
-			<p>
-				<strong><%= comment.author %></strong> - <%= comment.text %>
-			</p>
-		<% }); %>
+		<article class="campground-container">
+			<aside class="campground-sidebar">
+				<p class="sidebar-brand">YelpCamp</p>
+				<ul class="sidebar-category-list">
+					<li class="active">Category 1</li>
+					<li>Category 2</li>
+					<li>Category 3</li>
+				</ul>
+				<div class = "campground-map">
+					Map goes here
+				</div>
+			</aside>
+			<section class="campground-details">
+				<div class="campground-details-card">
+					<div class="image-container">
+						<img src='<%= campground.image %>' alt='<%= campground.name %>'>
+					</div>
+					<div class="caption">
+						<h2><%= campground.name %></h2>
+						<span class="price">$9.00/night</span>
+					</div>
+					<p><%= campground.description %></p>
+				</div>
+				<div class="campground-comments-card">
+					<a class="small-button" href="/campgrounds/<%= campground._id %>/comments/new">Add Comment</a>
+					<div class="comment-list-container">
+						<div class="comment-list">
+							<% campground.comments.forEach(comment => { %>
+								<div class="comment">
+									<div class="comment-meta">
+										<div><strong><%= comment.author %></strong></div>
+										<div>10 days ago</div>
+									</div>
+									<p class="comment-text">
+										<%= comment.text %>
+									</p>
+								</div>
+							<% }); %>
+						</div>
+					</div>
+				</div>
+			</section>
+		</article>
 	</main>
 
 <%- include('../partials/footer')  %>
