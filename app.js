@@ -14,7 +14,7 @@ mongoose.connect("mongodb://localhost:27017/yelp_camp", { useNewUrlParser: true 
 // Letting Express know that we're serving up ejs templates by default.
 app.set('view engine', 'ejs');
 
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Dummy Campgrounds array set up - Can be removed
