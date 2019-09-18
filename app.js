@@ -35,7 +35,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
+app.use((req, res, next) => {
+	res.locals.currentUser = req.user;
+	next();
+});
 
 // Dummy Campgrounds array set up - Can be removed
 /* let campgrounds = [
@@ -63,6 +66,8 @@ app.get('/campgrounds', (req, res) => {
 		if(err) {
 			console.log("Error", err);
 		} else {
+			// Sending currentUser forward, diff to do this in every route
+			// res.render('campgrounds/index', {campgrounds: allCampgrounds, currentUser: req.user}); 
 			res.render('campgrounds/index', {campgrounds: allCampgrounds});
 		}
 	})
