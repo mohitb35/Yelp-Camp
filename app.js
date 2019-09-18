@@ -135,7 +135,7 @@ app.post('/campgrounds/:id/comments', (req, res) => {
 
 
 // Setting up server to listen at port 3000, or PORT value set as environment (if available)
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
 	console.log('Server started', '-', new Date().toLocaleString());
 });
