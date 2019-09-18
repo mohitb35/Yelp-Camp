@@ -105,7 +105,7 @@ app.get('/campgrounds/:id', (req, res) => {
 
 // Comment Routes
 
-app.get('/campgrounds/:id/comments/new', (req, res) => {
+app.get('/campgrounds/:id/comments/new', isLoggedIn, (req, res) => {
 	let id = req.params.id;
 	Campground.findById(id, (err, fetchedCampground) => {
 		if(err) {
@@ -116,7 +116,7 @@ app.get('/campgrounds/:id/comments/new', (req, res) => {
 	})
 })
 
-app.post('/campgrounds/:id/comments', (req, res) => {
+app.post('/campgrounds/:id/comments', isLoggedIn, (req, res) => {
 	let campgroundId = req.params.id;
 	let newComment = req.body.comment;
 	// Lookup the campground
@@ -195,6 +195,15 @@ app.get('/logout', (req,res) => {
 	res.redirect('/campgrounds');
 });
 
+
+// Middleware to check if the user is logged in
+function isLoggedIn(req, res, next){
+	if(req.isAuthenticated()){
+		return next()
+	} else {
+		res.redirect('/login');
+	}
+}
 
 // Setting up server to listen at port 3000, or PORT value set as environment (if available)
 const port = process.env.PORT || 3001;
