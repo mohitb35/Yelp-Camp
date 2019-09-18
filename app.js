@@ -189,6 +189,13 @@ app.post('/login', passport.authenticate("local",
 	}), (req, res) => {
 });
 
+// Logout
+app.get('/logout', (req,res) => {
+	req.logout();
+	res.redirect('/campgrounds');
+});
+
+
 // Setting up server to listen at port 3000, or PORT value set as environment (if available)
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
