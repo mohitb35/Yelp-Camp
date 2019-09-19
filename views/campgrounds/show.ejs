@@ -22,6 +22,7 @@
 						<span class="price">$9.00/night</span>
 					</div>
 					<p><%= campground.description %></p>
+					<p><em>Submitted by <%= campground.author.username %></em></p>
 				</div>
 				<div class="campground-comments-card">
 					<a class="small-button" href="/campgrounds/<%= campground._id %>/comments/new">Add Comment</a>
