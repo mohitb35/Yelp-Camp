@@ -20,6 +20,13 @@ router.get('/new', isLoggedIn, (req, res) => {
 router.post('/', isLoggedIn, (req, res) => {
 	let campgroundId = req.params.id;
 	let newComment = req.body.comment;
+
+	// Adding author to the comment
+	newComment.author = {
+		id: req.user._id,
+		username: req.user.username
+	};
+	console.log(newComment);
 	// Lookup the campground
 	Campground.findById(campgroundId, (err, fetchedCampground) => {
 		if(err) {
@@ -32,6 +39,11 @@ router.post('/', isLoggedIn, (req, res) => {
 					console.log(err);
 					res.redirect('/campgrounds/' + fetchedCampground._id);
 				} else {
+					// Could do this, but you need to save the comment to the database once more.
+					/* createdComment.author.id = req.user._id;
+					createdComment.author.username = req.user.username;
+					createdComment.save(); */
+
 					// Add comment to the campground and save
 					fetchedCampground.comments.push(createdComment);
 					fetchedCampground.save((err) => {

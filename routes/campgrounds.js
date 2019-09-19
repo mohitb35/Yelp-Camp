@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
 			console.log("Error", err);
 		} else {
 			console.log("New campground:", createdCampground);
-			res.redirect('campgrounds/index');
+			res.redirect('/campgrounds');
 		}
 	})
 });

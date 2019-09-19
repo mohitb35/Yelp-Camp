@@ -3,10 +3,10 @@
 		<section class="form-container">
 			<h1>Add New Comment for <%= campground.name %></h1>
 			<form action="/campgrounds/<%= campground._id%>/comments" method='POST'>
-				<div class="form-field">
+				<!-- <div class="form-field">
 					<label for="comment-author">Author: </label>
 					<input type="text" id="comment-author" name="comment[author]" placeholder="Enter author's name">
-				</div>
+				</div> -->
 				<div class="form-field">
 					<label for="comment-text">Comment: </label>
 					<textarea name="comment[text]" id="comment-text" placeholder="Enter your comment"></textarea>
