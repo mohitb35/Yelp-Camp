@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 });
 
 // Campgrounds Create Route
-router.post('/', (req, res) => {
+router.post('/', isLoggedIn, (req, res) => {
 	// Create new campground and save to DB
 	let newCampground = {
 		name: req.body.name,
@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
 });
 
 // Campgrounds New Route
-router.get('/new', (req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
 	res.render('campgrounds/new');
 });
 
@@ -53,5 +53,13 @@ router.get('/:id', (req, res) => {
 	})
 });
 
+// Middleware to check if the user is logged in
+function isLoggedIn(req, res, next){
+	if(req.isAuthenticated()){
+		return next()
+	} else {
+		res.redirect('/login');
+	}
+}
 
 module.exports = router;
