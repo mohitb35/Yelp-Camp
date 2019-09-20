@@ -9,11 +9,11 @@
 				</div>
 				<div class="form-field">
 					<label for="image">Image: </label>
-					<input type="url" name="image" id="image" placeholder="Enter image URL" value="<%= campground.image %>">
+					<input type="url" name="campground[image]" id="image" placeholder="Enter image URL" value="<%= campground.image %>">
 				</div>
 				<div class="form-field">
 					<label for="description">Description: </label>
-					<textarea name="description" id="description" placeholder="Enter description"><%= campground.description %></textarea>
+					<textarea name="campground[description]" id="description" placeholder="Enter description"><%= campground.description %></textarea>
 				</div>
 				<button type="submit" class="button form-button">Save Campground</button>
 			</form>

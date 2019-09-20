@@ -27,15 +27,12 @@ router.get('/new', isLoggedIn, (req, res) => {
 // Campgrounds Create Route
 router.post('/', isLoggedIn, (req, res) => {
 	// Create new campground and save to DB
-	let newCampground = {
-		name: req.body.name,
-		image: req.body.image,
-		description: req.body.description,
-		author: {
-			id: req.user._id,
-			username: req.user.username
-		}
+	let newCampground = req.body.campground;
+	newCampground.author = {
+		id: req.user._id,
+		username: req.user.username
 	}
+
 	Campground.create(newCampground, (err, createdCampground) => {
 		if(err) {
 			console.log("Error", err);
@@ -59,22 +56,21 @@ router.get('/:id', (req, res) => {
 });
 
 // Edit Campground Route
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', checkCampgroundOwnership, (req, res) => {
 	let id = req.params.id;
 	Campground.findById(id, (err, fetchedCampground) => {
 		if(err) {
 			console.log(err);
 		} else {
 			res.render('campgrounds/edit', {campground: fetchedCampground})
-		}
+		} 
 	})
 });
 
 // Update Campground Route
-router.put('/:id', (req, res) => {
+router.put('/:id', checkCampgroundOwnership, (req, res) => {
 	let id = req.params.id;
-	console.log(req.body);
-	Campground.findByIdAndUpdate(id, req.body, (err, updatedCampground) => {
+	Campground.findByIdAndUpdate(id, req.body.campground, (err, updatedCampground) => {
 		if(err) {
 			console.log(err);
 			res.redirect('/campgrounds/'+id+'/edit');
@@ -86,7 +82,7 @@ router.put('/:id', (req, res) => {
 });
 
 // Destroy Campground Route
-router.delete('/:id', (req, res) => {
+router.delete('/:id', checkCampgroundOwnership, (req, res) => {
 	let id = req.params.id; 
 	Campground.findByIdAndDelete(id, (err, deletedCampground) => {
 		if(err) {
@@ -112,6 +108,27 @@ function isLoggedIn(req, res, next){
 		return next()
 	} else {
 		res.redirect('/login');
+	}
+}
+
+// Middleware to check if user has created campground
+function checkCampgroundOwnership(req, res, next) {
+	if(req.isAuthenticated()) {
+		// Fetch campground details
+		Campground.findById(req.params.id, (err, fetchedCampground) => {
+			if(err) {
+				res.redirect('back');
+			} else {
+				// Did the logged in user create this campground?
+				if(fetchedCampground.author.id.equals(req.user._id)) {
+					next();
+				} else {
+					res.redirect('back');
+				}
+			}
+		})
+	} else {
+		res.redirect('back');
 	}
 }
 

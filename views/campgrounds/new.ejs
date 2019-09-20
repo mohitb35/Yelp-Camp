@@ -5,15 +5,15 @@
 			<form action="/campgrounds" method='POST'>
 				<div class="form-field">
 					<label for="name">Name: </label>
-					<input type="text" id="name" name="name" placeholder="Enter campground name">
+					<input type="text" id="name" name="campground[name]" placeholder="Enter campground name">
 				</div>
 				<div class="form-field">
 					<label for="image">Image: </label>
-					<input type="url" name="image" id="image" placeholder="Enter image URL">
+					<input type="url" name="campground[image]" id="image" placeholder="Enter image URL">
 				</div>
 				<div class="form-field">
 					<label for="description">Description: </label>
-					<textarea name="description" id="description" placeholder="Enter description"></textarea>
+					<textarea name="campground[description]" id="description" placeholder="Enter description"></textarea>
 				</div>
 				<button type="submit" class="button form-button">Add Campground</button>
 			</form>
