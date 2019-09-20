@@ -23,6 +23,10 @@
 					</div>
 					<p><%= campground.description %></p>
 					<p><em>Submitted by <%= campground.author.username %></em></p>
+					<a class="small-button edit" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+					<form class="inline-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+						<button class="small-button edit form-button" type="submit">Delete</button>
+					</form>
 				</div>
 				<div class="campground-comments-card">
 					<a class="small-button" href="/campgrounds/<%= campground._id %>/comments/new">Add Comment</a>

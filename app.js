@@ -6,6 +6,7 @@ const 	express = require('express'),
 		passport = require('passport'),
 		LocalStrategy = require('passport-local'),
 		expressSession = require('express-session'),
+		methodOverride = require('method-override'),
 		// Comment = require('./models/comment'),
 		// Campground = require('./models/campground'),
 		User = require('./models/user');
@@ -25,6 +26,7 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 // Passport Config
 app.use(expressSession({

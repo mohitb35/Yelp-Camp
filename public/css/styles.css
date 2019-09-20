@@ -158,10 +158,19 @@ a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-	background: #6320EE;
+	background-color: #6320EE;
 	opacity: 1;
 	transform: scale(1.01);
 	outline: none;
+}
+
+a.small-button.edit {
+	background-color: #211A1D;
+}
+
+a.small-button.edit:hover, 
+a.small-button.edit:focus {
+	background-color: #6320EE;
 }
 
 #campground-grid {
@@ -319,7 +328,7 @@ ul.sidebar-category-list li:last-of-type{
 	align-items: flex-end;
 }
 
-a.small-button {
+a.small-button, button.small-button {
 	display: inline-block;
 	padding: 0.5rem 1rem;
 	background-color: #6320EE;
@@ -333,8 +342,10 @@ a.small-button {
 }
 
 a.small-button:hover, 
-a.small-button:focus {
-	background: rgb(99, 32, 238, 0.75);
+a.small-button:focus, 
+button.small-button:hover, 
+button.small-button:focus {
+	background: #211A1D;
 	opacity: 1;
 	transform: scale(1.01);
 	outline: none;
@@ -498,6 +509,13 @@ a.small-button:focus {
 	width: 100%;
 }
 
+.form-button.edit {
+	width: auto;
+}
+
+.inline-form {
+	display: inline-block;
+}
 
 
 
