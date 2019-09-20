@@ -514,7 +514,7 @@ button.small-button:focus {
 }
 
 .inline-form {
-	display: inline-block;
+	display: inline;
 }
 
 
