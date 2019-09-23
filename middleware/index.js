@@ -7,7 +7,7 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
 	if(req.isAuthenticated()) {
 		// Fetch campground details
 		Campground.findById(req.params.id, (err, fetchedCampground) => {
-			if(err) {
+			if(err ||!fetchedCampground) {
 				req.flash("error", "Oops, something went wrong. Please try after some time.");
 				res.redirect('back');
 			} else {
@@ -31,7 +31,7 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
 	if(req.isAuthenticated()) {
 		// Fetch comment details
 		Comment.findById(req.params.comment_id, (err, fetchedComment) => {
-			if(err) {
+			if(err ||!fetchedComment) {
 				req.flash("error", "Oops, something went wrong. Please try after some time.");
 				res.redirect('back');
 			} else {
@@ -56,6 +56,7 @@ middlewareObj.isLoggedIn = function(req, res, next) {
 		return next();
 	} else {
 		req.flash("error", "You need to be logged in to do that!");
+		req.session.redirectTo = req.originalUrl;
 		res.redirect('/login');
 	}
 };
