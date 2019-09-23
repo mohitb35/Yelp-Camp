@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
 	// Get campgrounds from DB
 	Campground.find({}, (err, allCampgrounds) => {
 		if(err) {
+			req.flash("error", "Oops, something went wrong. Please try after some time.");
 			console.log("Error", err);
 		} else {
 			// Sending currentUser forward, diff to do this in every route
@@ -36,9 +37,11 @@ router.post('/', middleware.isLoggedIn, (req, res) => {
 
 	Campground.create(newCampground, (err, createdCampground) => {
 		if(err) {
+			req.flash("error", "Oops, something went wrong. Please try after some time.");
 			console.log("Error", err);
 		} else {
 			console.log("New campground:", createdCampground);
+			req.flash("success", "New campground added!");
 			res.redirect('/campgrounds');
 		}
 	})
@@ -49,6 +52,7 @@ router.get('/:id', (req, res) => {
 	let id = req.params.id;
 	Campground.findById(id).populate("comments").exec( (err, fetchedCampground) => {
 		if(err) {
+			req.flash("error", "Oops, something went wrong. Please try after some time.");
 			console.log(err);
 		} else {
 			console.log("fetched campground:",fetchedCampground);
@@ -62,6 +66,7 @@ router.get('/:id/edit', middleware.checkCampgroundOwnership, (req, res) => {
 	let id = req.params.id;
 	Campground.findById(id, (err, fetchedCampground) => {
 		if(err) {
+			req.flash("error", "Oops, something went wrong. Please try after some time.");
 			console.log(err);
 		} else {
 			res.render('campgrounds/edit', {campground: fetchedCampground})
@@ -74,10 +79,12 @@ router.put('/:id', middleware.checkCampgroundOwnership, (req, res) => {
 	let id = req.params.id;
 	Campground.findByIdAndUpdate(id, req.body.campground, (err, updatedCampground) => {
 		if(err) {
+			req.flash("error", "Oops, something went wrong. Please try after some time.");
 			console.log(err);
 			res.redirect('/campgrounds/'+id+'/edit');
 		} else {
 			console.log("Updated campground:", updatedCampground);
+			req.flash("success", "Campground updated successfully!");
 			res.redirect('/campgrounds/'+id);
 		}
 	})
@@ -88,6 +95,7 @@ router.delete('/:id', middleware.checkCampgroundOwnership, (req, res) => {
 	let id = req.params.id; 
 	Campground.findByIdAndDelete(id, (err, deletedCampground) => {
 		if(err) {
+			req.flash("error", "Oops, something went wrong. Please try after some time.");
 			console.log(err);
 			res.redirect('/campgrounds/'+id);
 		} else {
@@ -95,8 +103,10 @@ router.delete('/:id', middleware.checkCampgroundOwnership, (req, res) => {
 			Comment.deleteMany({ _id: { $in: deletedCampground.comments }}, (err) => {
 				if(err) {
 					console.log(err);
+					req.flash("error", "Oops, something went wrong. Please try after some time.");
 					res.redirect('/campgrounds');
 				} else {
+					req.flash("success", "Campground deleted successfully!");
 					res.redirect('/campgrounds');
 				}
 			})

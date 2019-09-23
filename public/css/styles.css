@@ -517,9 +517,27 @@ button.small-button:focus {
 	display: inline;
 }
 
+/*Alerts
+----------------------------------------------------------------------------*/
+.alert {
+	width: 100%;
+	border: 1px solid;
+	font-size: 1rem;
+	font-weight: 400;
+	padding: 0.5rem 1rem;
+}
 
+.alert-error {
+	color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
 
-
+.alert-success {
+	color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
 
 /* Media Queries
 ---------------------------------------------------------------------------- */

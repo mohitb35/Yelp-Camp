@@ -51,17 +51,9 @@ router.post('/login', passport.authenticate("local",
 // Logout
 router.get('/logout', (req,res) => {
 	req.logout();
+	req.flash("success", "Logged out of YelpCamp. See you later!!")
 	res.redirect('/campgrounds');
 });
 
-
-// Middleware to check if the user is logged in
-function isLoggedIn(req, res, next){
-	if(req.isAuthenticated()){
-		return next()
-	} else {
-		res.redirect('/login');
-	}
-}
 
 module.exports = router;

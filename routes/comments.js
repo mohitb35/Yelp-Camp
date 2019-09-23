@@ -34,12 +34,14 @@ router.post('/', middleware.isLoggedIn, (req, res) => {
 	Campground.findById(campgroundId, (err, fetchedCampground) => {
 		if(err) {
 			console.log(err);
+			req.flash("error", "Oops, something went wrong. Please try after some time.");
 			res.redirect('/campgrounds')
 		} else {
 			// Create new comment
 			Comment.create(newComment, (err, createdComment) => {
 				if(err) {
 					console.log(err);
+					req.flash("error", "Oops, something went wrong. Please try after some time.");
 					res.redirect('/campgrounds/' + fetchedCampground._id);
 				} else {
 					// Could do this, but you need to save the comment to the database once more.
@@ -52,9 +54,11 @@ router.post('/', middleware.isLoggedIn, (req, res) => {
 					fetchedCampground.save((err) => {
 						if(err) {
 							console.log(err);
+							req.flash("error", "Oops, something went wrong. Please try after some time.");
 							res.redirect('/campgrounds/' + fetchedCampground._id);
 						} else {
 							// Redirect to the campground show page
+							req.flash("success", "Comment posted successfully!");
 							res.redirect('/campgrounds/' + fetchedCampground._id);
 						}
 					})
@@ -75,6 +79,7 @@ router.get('/:comment_id/edit', middleware.checkCommentOwnership, (req, res) => 
 			Comment.findById(commentId, (err, fetchedComment) => {
 				if(err) {
 					console.log(err);
+					req.flash("error", "Oops, something went wrong. Please try after some time.");
 					res.redirect('back');
 				} else {
 					res.render('comments/edit', {campground: fetchedCampground, comment: fetchedComment})
@@ -91,7 +96,9 @@ router.put('/:comment_id', middleware.checkCommentOwnership, (req, res) => {
 	Comment.findByIdAndUpdate(commentId, req.body.comment, (err, updatedComment) => {
 		if(err) {
 			console.log(err);
+			req.flash("error", "Oops, something went wrong. Please try after some time.");
 		} else {
+			req.flash("success", "Comment edited successfully!");
 			res.redirect('/campgrounds/' + campgroundId);
 		}
 	})
@@ -104,9 +111,11 @@ router.delete('/:comment_id', middleware.checkCommentOwnership, (req, res) => {
 	Comment.findByIdAndDelete(commentId, (err, deletedComment) => {
 		if(err) {
 			console.log(err);
+			req.flash("error", "Oops, something went wrong. Please try after some time.");
 			res.redirect('back');
 		} else {
 			console.log("Deleted comment:", deletedComment);
+			req.flash("success", "Comment deleted successfully!");
 			res.redirect('/campgrounds/' + campgroundId);
 		}
 	});
