@@ -50,6 +50,7 @@ router.get('/:id', (req, res) => {
 		if(err) {
 			console.log(err);
 		} else {
+			console.log("fetched campground:",fetchedCampground);
 			res.render('campgrounds/show', {campground: fetchedCampground})
 		}
 	})

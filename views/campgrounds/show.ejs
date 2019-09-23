@@ -43,6 +43,14 @@
 									<p class="comment-text">
 										<%= comment.text %>
 									</p>
+									<% if(currentUser && currentUser._id.equals(comment.author.id)) { %>
+										<a class="small-button edit" 
+											href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">Edit
+										</a>
+										<form class="inline-form" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+											<button class="small-button edit form-button" type="submit">Delete</button>
+										</form>
+									<% } %>
 								</div>
 							<% }); %>
 						</div>

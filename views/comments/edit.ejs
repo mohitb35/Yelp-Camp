@@ -1,0 +1,20 @@
+<%- include('../partials/header')  %>
+	<main class="centered-content">
+		<section class="form-container">
+			<h1>Edit Comment for <%= campground.name %></h1>
+			<form action="/campgrounds/<%= campground._id%>/comments/<%= comment._id%>?_method=PUT" method='POST'>
+				<!-- <div class="form-field">
+					<label for="comment-author">Author: </label>
+					<input type="text" id="comment-author" name="comment[author]" placeholder="Enter author's name">
+				</div> -->
+				<div class="form-field">
+					<label for="comment-text">Comment: </label>
+					<textarea name="comment[text]" id="comment-text" placeholder="Enter your comment"><%= comment.text %></textarea>
+				</div>
+				<button type="submit" class="button form-button">Save Comment</button>
+			</form>
+		</section>
+		<a href="/campgrounds/<%= campground._id%>">Go back to Campground</a>
+	</main>
+<%- include('../partials/footer')  %>
+
