@@ -1,11 +1,18 @@
 <%- include('partials/header')  %>
-
-<h1>Sign Up!</h1>
-
-<form action="/register" method="POST">
-	<input type="text" name="username" placeholder="Enter a username">
-	<input type="password" name="password" placeholder="Enter a password">
-	<button type="Submit">Sign Up</button>
-</form>
-
+<main class="centered-content">
+	<section class="form-container">
+		<h1>Sign Up</h1>
+		<form action="/register" method="POST">
+			<div class="form-field">
+				<label for="username">Username: </label>
+				<input type="text" name="username" id="username" placeholder="Enter a username">
+			</div>
+			<div class="form-field">
+				<label for="password">Password: </label>
+				<input type="password" name="password" id="password" placeholder="Enter your password">
+			</div>
+			<button type="submit" class="button form-button">Sign Up</button>
+	</section>
+	<a href="/login">Already registered? Login</a>
+</main>
 <%- include('partials/footer')  %>
