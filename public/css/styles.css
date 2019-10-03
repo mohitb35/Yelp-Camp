@@ -485,7 +485,10 @@ a.x-small-button, button.x-small-button {
 	opacity: 1;
 } 
 
-
+.navbar-menu-button a span{
+	width: 2rem;
+	text-align: center;
+}
 
 /* Forms
 ---------------------------------------------------------------------------- */

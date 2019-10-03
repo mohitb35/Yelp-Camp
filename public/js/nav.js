@@ -7,9 +7,9 @@ function menuToggle(event) {
 	})
 
 	if(navbarSecond[0].classList.contains('navbar-second-hidden')){
-		menuButton.textContent = "Show Menu";
+		menuButton.src = "/media/images/menu-open.svg";
 	} else {
-		menuButton.textContent = "Hide Menu";
+		menuButton.src = "/media/images/menu-close.svg";
 	}
 }
 
