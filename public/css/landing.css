@@ -67,7 +67,7 @@ button:focus {
 	font-size: 3rem;
 	background: rgba(34, 26, 30, 0.45);
 	background: 
-		radial-gradient(rgba(34, 26, 30, 0) 0% ,rgba(34, 26, 30, 0.60),rgba(34, 26, 30, 0) 100%);
+		linear-gradient(rgba(34, 26, 30, 0) 1% ,rgba(126, 82, 104, 0.6),rgba(34, 26, 30, 0) 99%);
 	padding: 0.5rem;
 }
 
@@ -151,3 +151,11 @@ footer {
 	  opacity: 0
 	}
   }
+
+  /* Media Queries
+---------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+	#landing-header h1  {
+		font-size: 2rem;
+	}
+}
