@@ -164,14 +164,31 @@ button:focus {
 	outline: none;
 }
 
-a.small-button.edit {
+a.small-button.edit,
+a.x-small-button.edit {
 	background-color: #211A1D;
 }
 
 a.small-button.edit:hover, 
-a.small-button.edit:focus {
-	background-color: #6320EE;
+a.small-button.edit:focus,
+a.x-small-button.edit:hover, 
+a.x-small-button.edit:focus {
+	background-color: #e78d0f;
 }
+
+button.small-button.delete,
+button.x-small-button.delete {
+	background-color:#a30e0e;
+}
+
+button.small-button.delete:hover, 
+button.small-button.delete:focus,
+button.x-small-button.delete:hover, 
+button.x-small-button.delete:focus {
+	background-color:#211A1D;
+}
+
+
 
 #campground-grid {
 	max-width: 1080px;
@@ -344,11 +361,29 @@ a.small-button, button.small-button {
 a.small-button:hover, 
 a.small-button:focus, 
 button.small-button:hover, 
-button.small-button:focus {
+button.small-button:focus,
+a.x-small-button:hover, 
+a.x-small-button:focus, 
+button.x-small-button:hover, 
+button.x-small-button:focus {
 	background: #211A1D;
 	opacity: 1;
 	transform: scale(1.01);
 	outline: none;
+}
+
+a.x-small-button, button.x-small-button {
+	display: inline-block;
+	padding: 0.5rem 0.8rem;
+	background-color: #6320EE;
+	color: #F8F0FB;
+	font-size: 0.9rem;
+	text-decoration: none;
+	border-radius: 1rem;
+	transition: background 100ms ease-in-out,
+				transform 100ms ease-in;
+	box-shadow: 1px 1px 2px #090909;
+	margin: 0.5rem;
 }
 
 .comment-list {
@@ -509,7 +544,7 @@ button.small-button:focus {
 	width: 100%;
 }
 
-.form-button.edit {
+.form-button.delete {
 	width: auto;
 }
 

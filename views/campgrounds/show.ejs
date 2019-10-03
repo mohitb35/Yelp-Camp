@@ -26,7 +26,7 @@
 					<% if(currentUser && currentUser._id.equals(campground.author.id)) { %>
 					<a class="small-button edit" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
 					<form class="inline-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
-						<button class="small-button edit form-button" type="submit">Delete</button>
+						<button class="small-button delete form-button" type="submit">Delete</button>
 					</form>
 					<% } %>
 				</div>
@@ -44,11 +44,11 @@
 										<%= comment.text %>
 									</p>
 									<% if(currentUser && currentUser._id.equals(comment.author.id)) { %>
-										<a class="small-button edit" 
+										<a class="x-small-button edit" 
 											href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">Edit
 										</a>
 										<form class="inline-form" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-											<button class="small-button edit form-button" type="submit">Delete</button>
+											<button class="x-small-button delete form-button" type="submit">Delete</button>
 										</form>
 									<% } %>
 								</div>
