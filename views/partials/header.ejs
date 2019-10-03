@@ -11,7 +11,7 @@
 <body>
 	<nav class="navbar">
 		<section class="navbar-first navbar-section">
-			<a href="/campgrounds" class="navbar-brand">
+			<a href="/" class="navbar-brand">
 				<img src="/media/images/favicon3.png" alt="">
 				<span>YelpCamp</span>
 			</a>
@@ -24,10 +24,12 @@
 		<section class="navbar-second navbar-second-hidden navbar-section">
 			<ul>
 				<% if(!currentUser) { %>
+					<li class="navbar-link"><a href="/campgrounds">Campgrounds</a></li>
 					<li class="navbar-link"><a href="/login">Login</a></li>
 					<li class="navbar-link"><a href="/register">Signup</a></li>
 				<% } else { %>
-					<li class="navbar-link">Currently signed in as <%= currentUser.username[0].toUpperCase() + currentUser.username.slice(1) %></li>
+					<li class="navbar-link"><em>Currently signed in as <u><%= currentUser.username[0].toUpperCase() + currentUser.username.slice(1) %></u></em></li>
+					<li class="navbar-link"><a href="/campgrounds">Campgrounds</a></li>
 					<li class="navbar-link"><a href="/logout">Logout</a></li>
 				<% } %>
 			</ul>
