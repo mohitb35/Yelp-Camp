@@ -21,7 +21,8 @@ const	campgroundRoutes = require('./routes/campgrounds'),
 mongoose.connect("mongodb://localhost:27017/yelp_camp_v8", 
 { 
 	useNewUrlParser: true,
-	useFindAndModify: false
+	useFindAndModify: false,
+	useUnifiedTopology: true
 });
 
 // seedDB();
@@ -61,7 +62,7 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 
 
 // Setting up server to listen at port 3000, or PORT value set as environment (if available)
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 app.listen(port, () => {
 	console.log('Server started on port:', port, '-', new Date().toLocaleString());
 });

@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 			console.log("Error", err);
 			res.redirect('back');
 		} else {
-			// Sending currentUser forward, diff to do this in every route
+			// Sending currentUser forward, difficult to do this in every route
 			// res.render('campgrounds/index', {campgrounds: allCampgrounds, currentUser: req.user}); 
 			res.render('campgrounds/index', {campgrounds: allCampgrounds});
 		}
